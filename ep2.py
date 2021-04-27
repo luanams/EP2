@@ -28,7 +28,3 @@ def lista_movimentos_possiveis(cartas,indice):
             if listavalores[indice] == listavalores[indice-3] or listanaipe[indice] == listanaipe[indice-3]:
                 resultado.append(3)
     return resultado
-            
-
-
-print(lista_movimentos_possiveis(['6♥', 'J♥', '9♣', '9♥'],1))
