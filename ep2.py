@@ -19,10 +19,14 @@ def lista_movimentos_possiveis(cartas,indice):
         valores = extrai_valor(cartas[i])
         listanaipe.append(naipes)
         listavalores.append(valores)
-    if listavalores[indice] == listavalores[indice-1] or listanaipe[indice] == listanaipe[indice-1]:
-            resultado.append(1)  
-    if listavalores[indice] == listavalores[indice-3] or listanaipe[indice] == listanaipe[indice-3]:
-            resultado.append(3)
+    if indice == 0:
+        return resultado
+    else:
+        if listavalores[indice] == listavalores[indice-1] or listanaipe[indice] == listanaipe[indice-1]:
+                resultado.append(1)
+        if indice > 2:  
+            if listavalores[indice] == listavalores[indice-3] or listanaipe[indice] == listanaipe[indice-3]:
+                resultado.append(3)
     return resultado
             
 
