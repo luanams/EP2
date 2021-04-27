@@ -13,32 +13,28 @@ def extrai_naipe(carta):
 def lista_movimentos_possiveis(baralho,indice):
     movimentos = 0 
     resultado = []
-    for i in range(0,len(baralho)-1):
-        naipe = extrai_naipe(baralho[i])
-        valor = extrai_valor(baralho[i])
-        if indice == '1':
-            if valor[1] == valor[0] or naipe[1] == naipe[0]:
+    for i in range(0,len(baralho)):
+        naipee = extrai_naipe(baralho[i])
+        valorr = extrai_valor(baralho[i])
+        if indice == 1:
+            if valorr[1] == valorr[0] or naipee[1] == naipee[0]:
                 movimentos += 1
-        if indice == '2':
-            if valor[2] == valor[1] or naipe[2] == naipe[1]:
+        if indice == 2:
+            if valorr[2] == valorr[1] or naipee[2] == naipee[1]:
                 movimentos += 1
-            if valor[2] == valor[0] or naipe[2] == naipe[0]:
+            if valorr[2] == valorr[0] or naipee[2] == naipee[0]:
                 movimentos += 3
-        if indice == '3':
-            if valor[3] == valor[2] or naipe[3] == naipe[2]:
+        if indice == 3:
+            if valorr[3] == valorr[2] or naipee[3] == naipee[2]:
                 movimentos += 1
-            if valor[3] == valor[1] or naipe[3] == naipe[1]:
+            if valorr[3] == valorr[1] or naipee[3] == naipee[1]:
                 movimentos += 3
-        if indice == '0':
-            movimentos += 0
-    if movimentos == '4':
-        resultado = [1,3]
-    if movimentos == '1':
-        resultado = [1]
-    if movimentos == '3':
-        resultado = [3]
-    if movimentos == '0':
-        resultado = []
+    if movimentos == 4:
+        resultado.append('1','3')
+    if movimentos == 1:
+        resultado.append('1')
+    if movimentos == 3:
+        resultado.append('3')
     return resultado
 
 print(lista_movimentos_possiveis(['6♥', 'J♥', '9♣', '9♥'],1))
