@@ -10,27 +10,30 @@ def extrai_naipe(carta):
     naipe = carta[len(carta)-1]
     return naipe
 
-def lista_movimentos_possiveis(baralho,indice):
-    for i in range(0,len(baralho)):
-        naipee = extrai_naipe(baralho[i])
-        valorr = extrai_valor(baralho[i])
-        if indice == '1':
-            if valorr[1] == valorr[0] or naipee[1] == naipee[0]:
-                return([1])
-        if indice == '2':
-            if valorr[2] == valorr[1] or naipee[2] == naipee[1]: 
-                return([1])
-            if valorr[2] == valorr[0] or naipee[2] == naipee[0]:
-                return([3])
-            if valorr[2] == valorr[1] or naipee[2] == naipee[1] and valorr[2] == valorr[0] or naipee[2] == naipee[0]:
-                return([1,3])
-        if indice == '3':
-            if valorr[3] == valorr[2] or naipee[3] == naipee[2]:
-                return([1])
-            if valorr[3] == valorr[1] or naipee[3] == naipee[1]:
-                return([3]) 
-            if valorr[3] == valorr[2] or naipee[3] == naipee[2] and valorr[3] == valorr[1] or naipee[3] == naipee[1]:
-                return([1,3])
+def lista_movimentos_possiveis(cartas,indice):
+    listanaipe = []
+    listavalores = []
+    resultado = []
+    for i in range(0,len(cartas)):
+        naipes = extrai_naipe(cartas[i])
+        valores = extrai_valor(cartas[i])
+        listanaipe.append(naipes)
+        listavalores.append(valores)
+    if indice == 1:
+        if listavalores[1] == listavalores[0] or listanaipe[1] == listanaipe[0]:
+            resultado.append(1)  
+    if indice == 2:
+        if listavalores[2] == listavalores[1] or listanaipe[2] == listanaipe[1]: 
+            resultado.append(1)
+        if listavalores[2] == listavalores[0] or listanaipe[2] == listanaipe[0]:
+            resultado.append(3)
+    if indice == 3:
+        if listavalores[3] == listavalores[2] or listanaipe[3] == listanaipe[2]:
+            resultado.append(1)
+        if listavalores[3] == listavalores[1] or listanaipe[3] == listanaipe[1]:
+            resultado.append(3)
+    return resultado
+            
 
 
 print(lista_movimentos_possiveis(['6♥', 'J♥', '9♣', '9♥'],1))
