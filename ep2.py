@@ -30,5 +30,6 @@ def lista_movimentos_possiveis(cartas,indice):
     return resultado
 
 def empilha(baralho,origem,destino):
-    baralho[destino] = origem
-    baralho.del(origem)
+    baralho[destino] = baralho[origem]
+    del(baralho[origem])
+    return baralho
