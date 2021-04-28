@@ -35,10 +35,14 @@ def empilha(baralho,origem,destino):
     return baralho
 
 def possui_movimentos_possiveis(baralho):
-    for i in range(0,len(baralho)):
+    sim = 0
+    for i in range(0,len(baralho)-1):
         movimentos = lista_movimentos_possiveis(baralho,i)
-        print (movimentos)
-    if movimentos == []:
-        return False
-    else:
+        if movimentos == []:
+            sim += 0
+        else:
+            sim += 1
+    if sim != 0:
         return True
+    else:
+        return False
