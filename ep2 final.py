@@ -51,10 +51,23 @@ random.shuffle(baralho)
 jogo = True
 
 while jogo:
+    if not possui_movimentos_possiveis(baralho):
+        if len(baralho) == 1:
+            print('voce venceu')
+        else:
+            print('voce perdeu')
+        novamente = input('\nquer jogar novamente (s/n)?')
+        if novamente == 's':
+            baralho = ['A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠', 'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥', 'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦', 'A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣'] 
+            random.shuffle(baralho)
+        else:
+            break
     cartas = []
+    movimentos = []
+    movimento = 0
     for i in range(0,len(baralho)) :
-        print('\n'+str(i)+ '. '+baralho[i])
-    pergunta = int(input('escolha uma carta, ou 99 para finalizar: '))
+        print(str(i)+ '. '+baralho[i])
+    pergunta = int(input('\nescolha uma carta, ou 99 para finalizar: '))
     if pergunta == 99:
         jogo = False
     elif pergunta == 0 or pergunta > 51:
@@ -71,19 +84,18 @@ while jogo:
         movimentos = lista_movimentos_possiveis(cartas,len(cartas)-1)
         if movimentos == []:
             print('escolha outra carta')
-        if movimentos == [1,3]:
-            escolha = int(input('para qual das cartas gostaria de movimentar? '))
-            print('\n'+str(i)+ '. '+cartas[pergunta - 3]+cartas[pergunta-1])
-            if escolha == 0:
-                movimento = pergunta - 3
-            if escolha == 1:
+        else:
+            if movimentos == [1,3]:
+                print('0 '+ baralho[pergunta-3])
+                print('1 '+ baralho[pergunta-1])
+                escolha = int(input('para qual das cartas gostaria de movimentar? '))
+                if escolha == 0:
+                    movimento = pergunta - 3
+                if escolha == 1:
+                    movimento = pergunta - 1
+            elif movimentos == [1]:
                 movimento = pergunta - 1
-        elif movimentos == [1]:
-            movimento = bpergunta - 1
-        elif movimentos == [3]:
-            movimento = pergunta - 3
-        jogada = empilha(baralho, pergunta , movimento )
-        acaba = possui_movimentos_possiveis(baralho)
-        if acaba == True:
-            jogo = False
+            elif movimentos == [3]:
+                movimento = pergunta - 3
+            jogada = empilha(baralho, pergunta , movimento )
     
