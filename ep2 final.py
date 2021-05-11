@@ -98,4 +98,5 @@ while jogo:
             elif movimentos == [3]:
                 movimento = pergunta - 3
             jogada = empilha(baralho, pergunta , movimento )
+
     
