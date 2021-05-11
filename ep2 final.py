@@ -45,7 +45,7 @@ while jogo:
         if resultado == [1,3]:
             print('\n'+str(i)+ '. '+(carta - 3)+(carta-1) )
             opcao = int(input('Para qual das duas gostaria de movimentar?' ))
-        return resultado
+        
 
         def empilha(baralho,pergunta,destino):
             if resultado == [1]:
@@ -55,6 +55,7 @@ while jogo:
             baralho[destino] = baralho[pergunta]
             del(baralho[pergunta])
             return baralho
+        return resultado
 
     def possui_movimentos_possiveis(baralho):
         sim = 0
@@ -62,7 +63,11 @@ while jogo:
             movimentos = lista_movimentos_possiveis(baralho,i)
             if movimentos == []:
                 sim += 0
-                jogo = False
+                perdeu = str(input('você perdeu, gostaria de começar de novo? '))
+                if perdeu == 'sim':
+                    
+                else:
+                    jogo = False
             else:
                 sim += 1
         if sim != 0:
